@@ -1,0 +1,5 @@
+# Shell scripts and workflows run on Linux runners; keep LF even when
+# committed from Windows with core.autocrlf.
+*.sh   text eol=lf
+*.yml  text eol=lf
+Makefile text eol=lf

@@ -1,0 +1,67 @@
+// Aida64SD bridge service contract.
+//
+// Adapted from hwinfo-streamdeck's hwservice.proto with two deliberate
+// deviations:
+//  1. All four RPCs are unary (the HWiNFO reference streams Sensors/
+//     ReadingsForSensorID/Sources). The AIDA64 payload is a single small
+//     string (~2 KB) per tick, so batching one response per call is simpler
+//     and the size is not a concern.
+//  2. The Sensor.sourceID and Source messages still exist for contract parity
+//     with the HWiNFO plugin, but AIDA64 is local-machine only, so the bridge
+//     always reports exactly one source with ID "" (see pkg/service/uid.go).
+syntax = "proto3";
+
+option go_package = "github.com/poizenjam/aida64sd/pkg/service/proto";
+
+import "google/protobuf/empty.proto";
+
+package proto;
+
+service AidService {
+  // PollTime reports the time (Unix nanoseconds) the shared-memory content
+  // last changed. It is the liveness/freshness signal for the plugin: AIDA64
+  // rewrites the block on every sensor update, but an idle box can rewrite
+  // byte-identical content for many seconds, so the plugin applies a 60 s
+  // staleness window to this token.
+  rpc PollTime(google.protobuf.Empty) returns (PollTimeReply) {}
+  // Sensors lists the sensor groups (AIDA64 categories: temp/volt/fan/duty/
+  // curr/pwr/sys) present in the latest snapshot.
+  rpc Sensors(google.protobuf.Empty) returns (SensorsReply) {}
+  // ReadingsForSensorID returns the readings of one sensor group.
+  rpc ReadingsForSensorID(SensorIDRequest) returns (ReadingsReply) {}
+  // Sources lists the bridge's data sources; exactly one, the local machine.
+  rpc Sources(google.protobuf.Empty) returns (SourcesReply) {}
+}
+
+message PollTimeReply { uint64 pollTime = 1; }
+
+message Sensor {
+  string ID = 1;    // AIDA64 category tag: temp, volt, fan, duty, curr, pwr, sys
+  string name = 2;  // display name, e.g. "Temperatures"
+  string sourceID = 3; // always "" (local) for AIDA64
+}
+
+message SensorsReply { repeated Sensor sensors = 1; }
+
+message SensorIDRequest { string id = 1; }
+
+message Reading {
+  string ID = 1;     // AIDA64 reading id, e.g. "TCPU", "PGPU1TDPP"
+  string type = 2;   // normalized type string: Temp, Volt, Fan, Current, Power, Clock, Usage, Other, Rate, DataSize
+  int32 typeI = 3;   // numeric form of type (plugin.Type order)
+  string label = 4;  // AIDA64 English label
+  string unit = 5;   // C, V, RPM, A, W, MHz, % or "" (Other)
+  double value = 6;  // 0 when the raw value is not a plain number
+  string rawValue = 7; // value string exactly as AIDA64 wrote it
+}
+
+message ReadingsReply { repeated Reading readings = 1; }
+
+message Source {
+  string ID = 1;         // "" for the local machine
+  string name = 2;       // "Local"
+  uint64 pollTime = 3;   // Unix nanoseconds, same contract as PollTimeReply
+  bool available = 4;    // block opened and parsed on the last tick
+}
+
+message SourcesReply { repeated Source sources = 1; }

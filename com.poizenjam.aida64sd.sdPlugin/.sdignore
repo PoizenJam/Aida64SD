@@ -1,0 +1,10 @@
+# .sdignore — patterns streamdeck pack excludes from the .streamDeckPlugin.
+# The mock bridge and Linux/dev binaries are test-harness only; the real package
+# ships the host, the AIDA64 bridge, the font, PIs, icons and css.
+mock-bridge
+mock-bridge.exe
+aida64dump.exe
+aida64.log
+*.log
+*.dll
+dist/

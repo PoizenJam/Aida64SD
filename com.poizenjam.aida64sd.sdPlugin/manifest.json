@@ -1,0 +1,116 @@
+{
+	"$schema": "https://schemas.elgato.com/streamdeck/plugins/manifest.json",
+	"SDKVersion": 3,
+	"Software": {
+		"MinimumVersion": "6.9"
+	},
+	"Actions": [
+		{
+			"Icon": "actionIcon",
+			"Name": "Sensor",
+			"States": [
+				{
+					"Image": "defaultImage",
+					"TitleAlignment": "top",
+					"FontSize": 9,
+					"TitleColor": "#b7b7b7",
+					"ShowTitle": false
+				}
+			],
+			"SupportedInMultiActions": false,
+			"Tooltip": "Display a sensor reading from AIDA64",
+			"UUID": "com.poizenjam.aida64sd.reading"
+		},
+		{
+			"Icon": "actionIcon_composite",
+			"Name": "Composite",
+			"States": [
+				{
+					"Image": "defaultImage",
+					"ShowTitle": false
+				}
+			],
+			"SupportedInMultiActions": false,
+			"Tooltip": "Display 2-4 sensor readings on one tile with overlaid graphs",
+			"UUID": "com.poizenjam.aida64sd.composite",
+			"PropertyInspectorPath": "composite_pi.html"
+		},
+		{
+			"Icon": "actionIcon_derived",
+			"Name": "Derived",
+			"States": [
+				{
+					"Image": "defaultImage",
+					"ShowTitle": false
+				}
+			],
+			"SupportedInMultiActions": false,
+			"Tooltip": "Aggregate 2-8 sensor readings with sum, average, max, min, delta or pct formula",
+			"UUID": "com.poizenjam.aida64sd.derived",
+			"PropertyInspectorPath": "derived_pi.html"
+		},
+		{
+			"Icon": "actionIcon_dial",
+			"Name": "Dial Carousel",
+			"Controllers": [
+				"Encoder"
+			],
+			"Encoder": {
+				"layout": "$A0",
+				"TriggerDescription": {
+					"Rotate": "Cycle reading"
+				}
+			},
+			"States": [
+				{
+					"Image": "defaultImage",
+					"ShowTitle": false
+				}
+			],
+			"SupportedInMultiActions": false,
+			"Tooltip": "Display one sensor reading on the Stream Deck+ touch strip and rotate the dial to cycle readings",
+			"UUID": "com.poizenjam.aida64sd.dial",
+			"PropertyInspectorPath": "dial_pi.html"
+		},
+		{
+			"Icon": "actionIcon_settings",
+			"Name": "Settings",
+			"States": [
+				{
+					"Image": "settingsImage",
+					"TitleAlignment": "top",
+					"FontSize": 9,
+					"TitleColor": "#b7b7b7",
+					"ShowTitle": false
+				}
+			],
+			"SupportedInMultiActions": false,
+			"Tooltip": "Refresh rate, AIDA64 connection and global thresholds",
+			"UUID": "com.poizenjam.aida64sd.settings",
+			"PropertyInspectorPath": "settings_pi.html"
+		}
+	],
+	"Author": "poizenjam",
+	"CodePath": "aida64.exe",
+	"PropertyInspectorPath": "index_pi.html",
+	"Description": "Live AIDA64 sensor readings as graphs and text. Adapted from hwinfo-streamdeck (GPL-3.0). Not affiliated with FinalWire or the hwinfo-streamdeck authors.",
+	"Name": "Aida64SD",
+	"UUID": "com.poizenjam.aida64sd",
+	"Icon": "pluginIcon",
+	"CategoryIcon": "categoryIcon",
+	"URL": "https://github.com/poizenjam/aida64sd",
+	"Version": "1.0.0.0",
+	"ApplicationsToMonitor": {
+		"windows": [
+			"AIDA64.EXE",
+			"AIDA64.exe"
+		]
+	},
+	"OS": [
+		{
+			"Platform": "windows",
+			"MinimumVersion": "10"
+		}
+	],
+	"Category": "Aida64SD"
+}

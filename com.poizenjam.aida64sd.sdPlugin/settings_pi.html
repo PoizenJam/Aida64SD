@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport"
+    content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui,viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <title>Aida64SD Settings</title>
+  <link rel="stylesheet" href="css/sdpi.css" />
+  <link rel="stylesheet" href="css/local.css" />
+</head>
+
+<body>
+  <div class="sdpi-wrapper localbody">
+    <div class="sdpi-heading">Refresh Rate</div>
+
+    <div class="sdpi-item">
+      <div class="sdpi-item-label">Interval</div>
+      <select class="sdpi-item-value select" id="pollInterval">
+        <option value="auto" selected>Auto (INI)</option>
+        <option value="250">250ms</option>
+        <option value="500">500ms</option>
+        <option value="1000">1s</option>
+        <option value="2000">2s</option>
+        <option value="5000">5s</option>
+        <option value="10000">10s</option>
+      </select>
+    </div>
+
+    <div class="sdpi-item">
+      <div class="sdpi-item-label">Auto refresh</div>
+      <label>
+        <input class="show-label-checkbox" id="autoRefresh" type="checkbox" checked />
+        <span>Follow AIDA64 (INI)</span>
+      </label>
+    </div>
+
+    <div class="sdpi-item">
+      <div class="sdpi-item-label">INI path</div>
+      <div style="display:flex;gap:4px;align-items:center;">
+        <input class="sdpi-item-value" id="iniPath" type="text" placeholder="auto-detect" style="flex:1 1 auto;min-width:0;" />
+        <button class="sdpi-item-value" id="refreshIniBtn" type="button" style="width:64px;flex:0 0 auto;cursor:pointer;" title="Re-read AIDA64.INI now">Refresh</button>
+      </div>
+    </div>
+
+    <div class="sdpi-item">
+      <div class="sdpi-item-label">INI key</div>
+      <select class="sdpi-item-value select" id="iniRateKey">
+        <option value="">(default)</option>
+      </select>
+    </div>
+
+    <div class="sdpi-item">
+      <details class="message info">
+        <summary>Info</summary>
+        <p>Auto follows AIDA64's own sensor update rate, read from AIDA64.INI
+          (HWMonUpdateFreq* keys). A fixed interval overrides it.</p>
+        <p>Tiles can never update faster than AIDA64 refreshes its sensors.</p>
+        <p>Changes apply immediately to all tiles.</p>
+      </details>
+    </div>
+
+    <details>
+      <summary>Tile Appearance</summary>
+
+      <div type="color" class="sdpi-item">
+        <div class="sdpi-item-label">Background</div>
+        <input type="color" class="sdpi-item-value" id="tileBackground" value="#000000" />
+        <div class="sdpi-item-label">Text</div>
+        <input type="color" class="sdpi-item-value" id="tileTextColor" value="#ffffff" />
+      </div>
+
+      <div class="sdpi-item">
+        <div class="sdpi-item-label">Show Background</div>
+        <label>
+          <input class="show-label-checkbox" id="showLabel" type="checkbox" checked />
+          <span>Key art (off: solid colour)</span>
+        </label>
+      </div>
+    </details>
+
+    <details>
+      <summary>Global Thresholds</summary>
+
+      <div id="globalThresholdsContainer">
+        <!-- Dynamic global threshold editor items rendered here -->
+      </div>
+
+      <div class="sdpi-item" id="addGlobalThresholdContainer">
+        <div class="sdpi-item-label">Add New</div>
+        <div class="sdpi-item-value" style="display: flex; align-items: center; gap: 4px;">
+          <input type="text" id="newGlobalThresholdName" placeholder="Name" style="width: 100px;" />
+          <button id="addGlobalThresholdBtn" class="sdpi-item-value" style="width: 60px;" type="button">Add</button>
+        </div>
+      </div>
+
+      <details class="message info" style="margin-top: 8px;">
+        <summary>How globals work</summary>
+        <p>Global thresholds apply to every sensor tile whose reading type matches
+          (or all tiles when the type is left empty). A tile can opt out of a global
+          in its own Global Thresholds section.</p>
+      </details>
+    </details>
+
+    <!-- Template for global threshold editor items (cloned by JS) -->
+    <template id="globalThresholdTemplate">
+      <div class="threshold-item" data-threshold-id="">
+        <div class="sdpi-item" style="margin-top: 8px;">
+          <div class="sdpi-item-label threshold-header-label">
+            <input type="text" class="threshold-name" placeholder="Name" style="width: 70px;" />
+          </div>
+          <div class="sdpi-item-value threshold-header-value" style="display: flex; align-items: center; gap: 4px;">
+            <button class="threshold-toggle" style="width: 26px; padding: 0;">on</button>
+            <button class="threshold-remove" style="width: 18px; padding: 0; background: #a33; color: white;" title="Remove">&times;</button>
+          </div>
+        </div>
+        <div class="threshold-settings" style="display: none;">
+          <div class="sdpi-item">
+            <div class="sdpi-item-label">Text</div>
+            <input type="text" class="sdpi-item-value threshold-text" placeholder="e.g. HOT or Hot {value}" />
+          </div>
+          <div class="sdpi-item">
+            <div class="sdpi-item-label">Sensor type</div>
+            <select class="sdpi-item-value threshold-reading-type" style="width: 120px;">
+              <option value="">All types</option>
+              <option value="Temp">Temperature</option>
+              <option value="Volt">Voltage</option>
+              <option value="Fan">Fan</option>
+              <option value="Current">Current</option>
+              <option value="Power">Power</option>
+              <option value="Clock">Clock</option>
+              <option value="Usage">Usage</option>
+              <option value="Rate">Rate</option>
+              <option value="DataSize">Data Size</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="sdpi-item">
+            <div class="sdpi-item-label">Condition</div>
+            <div class="sdpi-item-value" style="display: flex; align-items: center; gap: 4px;">
+              <select class="threshold-operator" style="width: 55px;">
+                <option value=">">&gt;</option>
+                <option value="<">&lt;</option>
+                <option value=">=" selected>&gt;=</option>
+                <option value="<=">&lt;=</option>
+                <option value="==">==</option>
+              </select>
+              <input type="number" class="threshold-value" step="any" style="width: 60px;" placeholder="Value" />
+            </div>
+          </div>
+          <div class="sdpi-item threshold-advanced-toggle-row">
+            <div class="sdpi-item-label threshold-empty-label"></div>
+            <div class="sdpi-item-value threshold-advanced-toggle-cell">
+              <button class="threshold-advanced-toggle" type="button">Advanced</button>
+            </div>
+          </div>
+          <div class="threshold-advanced-panel" style="display: none;">
+            <div class="sdpi-item threshold-compact-row">
+              <div class="sdpi-item-label">Hyst</div>
+              <input type="number" class="sdpi-item-value threshold-hysteresis threshold-input-compact" step="any" placeholder="1" />
+            </div>
+            <div class="sdpi-item threshold-compact-row">
+              <div class="sdpi-item-label">Dwell ms</div>
+              <input type="number" class="sdpi-item-value threshold-dwell threshold-input-compact" step="100" min="0" placeholder="1000" />
+            </div>
+            <div class="sdpi-item threshold-compact-row">
+              <div class="sdpi-item-label">Cooldown ms</div>
+              <input type="number" class="sdpi-item-value threshold-cooldown threshold-input-compact" step="100" min="0" placeholder="5000" />
+            </div>
+            <div class="sdpi-item threshold-sticky-row">
+              <div class="sdpi-item-label">Sticky</div>
+              <div class="sdpi-item-value threshold-sticky-cell">
+                <button class="threshold-sticky-toggle" type="button">off</button>
+              </div>
+            </div>
+          </div>
+          <div type="color" class="sdpi-item">
+            <div class="sdpi-item-label">Background</div>
+            <input type="color" class="sdpi-item-value threshold-bg" value="#333300" />
+            <div class="sdpi-item-label">Value Text</div>
+            <input type="color" class="sdpi-item-value threshold-vt" value="#ffff00" />
+          </div>
+          <div type="color" class="sdpi-item">
+            <div class="sdpi-item-label">Foreground</div>
+            <input type="color" class="sdpi-item-value threshold-fg" value="#999900" />
+            <div class="sdpi-item-label">Highlight</div>
+            <input type="color" class="sdpi-item-value threshold-hl" value="#ffff00" />
+          </div>
+          <div type="color" class="sdpi-item">
+            <div class="sdpi-item-label">Alert Text</div>
+            <input type="color" class="sdpi-item-value threshold-tc" value="#ffffff" />
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <div class="sdpi-heading">Status</div>
+
+    <div class="sdpi-item">
+      <div class="sdpi-item-label">AIDA64</div>
+      <div class="sdpi-item-value" id="connectionStatus" style="color: #999;">Checking...</div>
+    </div>
+
+    <div class="sdpi-item">
+      <div class="sdpi-item-label">Current Rate</div>
+      <div class="sdpi-item-value" id="currentRate" style="color: #999;">--</div>
+    </div>
+
+    <div class="sdpi-item">
+      <div class="sdpi-item-label">Version</div>
+      <div class="sdpi-item-value" id="pluginVersion" style="color: #999;">--</div>
+    </div>
+  </div>
+
+  <script src="pi_utils.js?v=1.0.0.0"></script>
+  <script src="settings_pi.js?v=1.0.0.0"></script>
+</body>
+
+</html>

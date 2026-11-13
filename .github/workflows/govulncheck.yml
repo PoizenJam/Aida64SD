@@ -1,0 +1,28 @@
+name: govulncheck
+
+# Checks the Go dependencies and standard library against the Go
+# vulnerability database: weekly (new advisories), on pushes to main and on
+# demand. Checked as the Windows cgo build, since that is what ships: with
+# cgo off, the shared-memory reader (import "C") is left out and its callers
+# fail to type-check.
+on:
+  schedule:
+    - cron: "17 6 * * 1"
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  govulncheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-go@v7
+        with:
+          go-version-file: go.mod
+      - run: sudo apt-get update && sudo apt-get install -y gcc-mingw-w64-x86-64
+      - run: go install golang.org/x/vuln/cmd/govulncheck@latest
+      - run: GOOS=windows CGO_ENABLED=1 CC=x86_64-w64-mingw32-gcc "$(go env GOPATH)/bin/govulncheck" ./...

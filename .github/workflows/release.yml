@@ -1,0 +1,53 @@
+name: Release
+
+# Pushing a tag like v1.0.0 builds the plugin and opens a DRAFT release with
+# the artifacts and notes. Nothing is public until the draft is published.
+# Run it again from the Actions tab (Run workflow, with the tag) to rebuild a
+# draft; a published release is never replaced.
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Tag to build, e.g. v1.0.1"
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    env:
+      TAG: ${{ inputs.tag || github.ref_name }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: refs/tags/${{ env.TAG }}
+      - uses: actions/setup-go@v7
+        with:
+          go-version-file: go.mod
+      - name: Install mingw-w64 and the Elgato CLI
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc-mingw-w64-x86-64
+          npm install -g @elgato/cli
+      - name: Build artifacts and notes
+        run: bash scripts/release.sh "$TAG"
+      - name: Create or update the draft release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title="Aida64SD ${TAG#v}"
+          if draft=$(gh release view "$TAG" --json isDraft --jq .isDraft 2>/dev/null); then
+            if [ "$draft" != "true" ]; then
+              echo "Release $TAG is already published; not replacing it."
+              exit 1
+            fi
+            gh release upload "$TAG" release/* --clobber
+            gh release edit "$TAG" --title "$title" --notes-file release-notes.md
+          else
+            gh release create "$TAG" release/* --title "$title" \
+              --notes-file release-notes.md --verify-tag --draft
+          fi

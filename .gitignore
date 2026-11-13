@@ -1,0 +1,24 @@
+# Build outputs (rebuilt with build.ps1 on Windows or make on Linux/WSL).
+build/
+dist/
+*.exe
+*.dll
+*.streamDeckPlugin
+*.zip
+*.log
+
+# Node packages if a PI test ever needs any (the tests use only Node built-ins).
+node_modules/
+
+# Local working notes and screenshots that are not part of the project.
+backups/
+*.local.md
+release/
+release-notes.md
+
+# Editor and IDE state (holds local paths)
+.vs/
+.vscode/
+.idea/
+*.suo
+*.user

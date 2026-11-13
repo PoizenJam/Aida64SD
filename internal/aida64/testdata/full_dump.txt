@@ -1,0 +1,222 @@
+<curr><id>CGPU18P1</id><label>GPU1 8-pin #1</label><value>4.03</value></curr>
+<curr><id>CGPU18P2</id><label>GPU1 8-pin #2</label><value>1.43</value></curr>
+<curr><id>CGPU18P3</id><label>GPU1 8-pin #3</label><value>2.06</value></curr>
+<curr><id>CGPU1PCIE</id><label>GPU1 PCIe</label><value>1.25</value></curr>
+<curr><id>CGPU2SOC</id><label>GPU2 SoC</label><value>17.00</value></curr>
+<duty><id>DGPU1</id><label>GPU1</label><value>53.00</value></duty>
+<duty><id>DGPU1GPU2</id><label>GPU1 #2</label><value>53.00</value></duty>
+<fan><id>FCHA1</id><label>Chassis #1</label><value>702.00</value></fan>
+<fan><id>FCHA2</id><label>Chassis #2</label><value>948.00</value></fan>
+<fan><id>FCPU</id><label>CPU</label><value>798.00</value></fan>
+<fan><id>FCPUOPT</id><label>CPU OPT</label><value>0.00</value></fan>
+<fan><id>FGPU1</id><label>GPU1</label><value>1000.00</value></fan>
+<fan><id>FGPU1GPU2</id><label>GPU1 #2</label><value>999.00</value></fan>
+<fan><id>FWPUMP</id><label>Water Pump</label><value>1656.00</value></fan>
+<pwr><id>PCPUPKG</id><label>CPU Package</label><value>78.16</value></pwr>
+<pwr><id>PGPU1</id><label>GPU1</label><value>107.25</value></pwr>
+<pwr><id>PGPU18P1</id><label>GPU1 8-pin #1</label><value>48.97</value></pwr>
+<pwr><id>PGPU18P2</id><label>GPU1 8-pin #2</label><value>17.53</value></pwr>
+<pwr><id>PGPU18P3</id><label>GPU1 8-pin #3</label><value>25.44</value></pwr>
+<pwr><id>PGPU1PCIE</id><label>GPU1 PCIe</label><value>15.30</value></pwr>
+<pwr><id>PGPU1TDPP</id><label>GPU1 TDP%</label><value>28.00</value></pwr>
+<pwr><id>PGPU2</id><label>GPU2</label><value>81.00</value></pwr>
+<pwr><id>PGPU2SOC</id><label>GPU2 SoC</label><value>21.00</value></pwr>
+<sys><id>SAIDAFPS</id><label>AIDA FPS</label><value>0.00</value></sys>
+<sys><id>SBATT</id><label>Battery</label><value>0.00</value></sys>
+<sys><id>SBIOSVER</id><label>BIOS Version</label><value>2503.00</value></sys>
+<sys><id>SCC-1-1</id><label>CPU Core #1 Clock</label><value>5550.00</value></sys>
+<sys><id>SCC-1-10</id><label>CPU Core #10 Clock</label><value>5705.00</value></sys>
+<sys><id>SCC-1-11</id><label>CPU Core #11 Clock</label><value>5685.00</value></sys>
+<sys><id>SCC-1-12</id><label>CPU Core #12 Clock</label><value>5700.00</value></sys>
+<sys><id>SCC-1-13</id><label>CPU Core #13 Clock</label><value>4275.00</value></sys>
+<sys><id>SCC-1-14</id><label>CPU Core #14 Clock</label><value>4271.00</value></sys>
+<sys><id>SCC-1-15</id><label>CPU Core #15 Clock</label><value>4271.00</value></sys>
+<sys><id>SCC-1-16</id><label>CPU Core #16 Clock</label><value>5700.00</value></sys>
+<sys><id>SCC-1-2</id><label>CPU Core #2 Clock</label><value>4293.00</value></sys>
+<sys><id>SCC-1-3</id><label>CPU Core #3 Clock</label><value>4293.00</value></sys>
+<sys><id>SCC-1-4</id><label>CPU Core #4 Clock</label><value>4293.00</value></sys>
+<sys><id>SCC-1-5</id><label>CPU Core #5 Clock</label><value>4293.00</value></sys>
+<sys><id>SCC-1-6</id><label>CPU Core #6 Clock</label><value>4293.00</value></sys>
+<sys><id>SCC-1-7</id><label>CPU Core #7 Clock</label><value>4293.00</value></sys>
+<sys><id>SCC-1-8</id><label>CPU Core #8 Clock</label><value>4293.00</value></sys>
+<sys><id>SCC-1-9</id><label>CPU Core #9 Clock</label><value>5710.00</value></sys>
+<sys><id>SCPU10UTI</id><label>CPU10 Utilization</label><value>0.00</value></sys>
+<sys><id>SCPU11UTI</id><label>CPU11 Utilization</label><value>0.00</value></sys>
+<sys><id>SCPU12UTI</id><label>CPU12 Utilization</label><value>2.00</value></sys>
+<sys><id>SCPU13UTI</id><label>CPU13 Utilization</label><value>2.00</value></sys>
+<sys><id>SCPU14UTI</id><label>CPU14 Utilization</label><value>0.00</value></sys>
+<sys><id>SCPU15UTI</id><label>CPU15 Utilization</label><value>2.00</value></sys>
+<sys><id>SCPU16UTI</id><label>CPU16 Utilization</label><value>2.00</value></sys>
+<sys><id>SCPU17UTI</id><label>CPU17 Utilization</label><value>21.00</value></sys>
+<sys><id>SCPU18UTI</id><label>CPU18 Utilization</label><value>15.00</value></sys>
+<sys><id>SCPU19UTI</id><label>CPU19 Utilization</label><value>15.00</value></sys>
+<sys><id>SCPU1UTI</id><label>CPU1 Utilization</label><value>0.00</value></sys>
+<sys><id>SCPU20UTI</id><label>CPU20 Utilization</label><value>12.00</value></sys>
+<sys><id>SCPU21UTI</id><label>CPU21 Utilization</label><value>3.00</value></sys>
+<sys><id>SCPU22UTI</id><label>CPU22 Utilization</label><value>12.00</value></sys>
+<sys><id>SCPU23UTI</id><label>CPU23 Utilization</label><value>6.00</value></sys>
+<sys><id>SCPU24UTI</id><label>CPU24 Utilization</label><value>12.00</value></sys>
+<sys><id>SCPU25UTI</id><label>CPU25 Utilization</label><value>9.00</value></sys>
+<sys><id>SCPU26UTI</id><label>CPU26 Utilization</label><value>12.00</value></sys>
+<sys><id>SCPU27UTI</id><label>CPU27 Utilization</label><value>21.00</value></sys>
+<sys><id>SCPU28UTI</id><label>CPU28 Utilization</label><value>21.00</value></sys>
+<sys><id>SCPU29UTI</id><label>CPU29 Utilization</label><value>3.00</value></sys>
+<sys><id>SCPU2UTI</id><label>CPU2 Utilization</label><value>12.00</value></sys>
+<sys><id>SCPU30UTI</id><label>CPU30 Utilization</label><value>0.00</value></sys>
+<sys><id>SCPU31UTI</id><label>CPU31 Utilization</label><value>15.00</value></sys>
+<sys><id>SCPU32UTI</id><label>CPU32 Utilization</label><value>6.00</value></sys>
+<sys><id>SCPU3UTI</id><label>CPU3 Utilization</label><value>0.00</value></sys>
+<sys><id>SCPU4UTI</id><label>CPU4 Utilization</label><value>2.00</value></sys>
+<sys><id>SCPU5UTI</id><label>CPU5 Utilization</label><value>0.00</value></sys>
+<sys><id>SCPU6UTI</id><label>CPU6 Utilization</label><value>0.00</value></sys>
+<sys><id>SCPU7UTI</id><label>CPU7 Utilization</label><value>0.00</value></sys>
+<sys><id>SCPU8UTI</id><label>CPU8 Utilization</label><value>0.00</value></sys>
+<sys><id>SCPU9UTI</id><label>CPU9 Utilization</label><value>0.00</value></sys>
+<sys><id>SCPUCLK</id><label>CPU Clock</label><value>5550.00</value></sys>
+<sys><id>SCPUFSB</id><label>CPU FSB</label><value>100.00</value></sys>
+<sys><id>SCPUMUL</id><label>CPU Multiplier</label><value>55.50</value></sys>
+<sys><id>SCPUUTI</id><label>CPU Utilization</label><value>6.00</value></sys>
+<sys><id>SDATE</id><label>Date</label><value>0.00</value></sys>
+<sys><id>SDAYOFMONTH</id><label>Day of Month</label><value>31.00</value></sys>
+<sys><id>SDESKRES</id><label>Desktop Resolution</label><value>0.00</value></sys>
+<sys><id>SDOW</id><label>Day of Week</label><value>6.00</value></sys>
+<sys><id>SDOWNAME</id><label>Day of Week Name</label><value>0.00</value></sys>
+<sys><id>SDRAMFSB</id><label>DRAM:FSB Ratio</label><value>0.00</value></sys>
+<sys><id>SDRVCFREESPC</id><label>Drive C: Free Space</label><value>799.00</value></sys>
+<sys><id>SDRVCUSEDSPC</id><label>Drive C: Used Space</label><value>1062.00</value></sys>
+<sys><id>SDRVCUTI</id><label>Drive C: Utilization</label><value>57.00</value></sys>
+<sys><id>SDRVEFREESPC</id><label>Drive E: Free Space</label><value>1481.00</value></sys>
+<sys><id>SDRVEUSEDSPC</id><label>Drive E: Used Space</label><value>382.00</value></sys>
+<sys><id>SDRVEUTI</id><label>Drive E: Utilization</label><value>21.00</value></sys>
+<sys><id>SDRVFFREESPC</id><label>Drive F: Free Space</label><value>577.00</value></sys>
+<sys><id>SDRVFUSEDSPC</id><label>Drive F: Used Space</label><value>1286.00</value></sys>
+<sys><id>SDRVFUTI</id><label>Drive F: Utilization</label><value>69.00</value></sys>
+<sys><id>SDRVGFREESPC</id><label>Drive G: Free Space</label><value>2764.00</value></sys>
+<sys><id>SDRVGUSEDSPC</id><label>Drive G: Used Space</label><value>962.00</value></sys>
+<sys><id>SDRVGUTI</id><label>Drive G: Utilization</label><value>26.00</value></sys>
+<sys><id>SDRVHFREESPC</id><label>Drive H: Free Space</label><value>989.00</value></sys>
+<sys><id>SDRVHUSEDSPC</id><label>Drive H: Used Space</label><value>2737.00</value></sys>
+<sys><id>SDRVHUTI</id><label>Drive H: Utilization</label><value>73.00</value></sys>
+<sys><id>SDSK1ACT</id><label>Disk 1 Activity</label><value>0.00</value></sys>
+<sys><id>SDSK1READSPD</id><label>Disk 1 Read Speed</label><value>0.00</value></sys>
+<sys><id>SDSK1WRITESPD</id><label>Disk 1 Write Speed</label><value>0.00</value></sys>
+<sys><id>SDSK2ACT</id><label>Disk 2 Activity</label><value>0.00</value></sys>
+<sys><id>SDSK2READSPD</id><label>Disk 2 Read Speed</label><value>0.00</value></sys>
+<sys><id>SDSK2WRITESPD</id><label>Disk 2 Write Speed</label><value>0.00</value></sys>
+<sys><id>SDSK3ACT</id><label>Disk 3 Activity</label><value>0.00</value></sys>
+<sys><id>SDSK3READSPD</id><label>Disk 3 Read Speed</label><value>0.00</value></sys>
+<sys><id>SDSK3WRITESPD</id><label>Disk 3 Write Speed</label><value>0.00</value></sys>
+<sys><id>SDSK4ACT</id><label>Disk 4 Activity</label><value>0.00</value></sys>
+<sys><id>SDSK4READSPD</id><label>Disk 4 Read Speed</label><value>0.00</value></sys>
+<sys><id>SDSK4WRITESPD</id><label>Disk 4 Write Speed</label><value>0.00</value></sys>
+<sys><id>SDSK5ACT</id><label>Disk 5 Activity</label><value>0.00</value></sys>
+<sys><id>SDSK5READSPD</id><label>Disk 5 Read Speed</label><value>0.10</value></sys>
+<sys><id>SDSK5WRITESPD</id><label>Disk 5 Write Speed</label><value>0.00</value></sys>
+<sys><id>SEXTIPADDR</id><label>External IP Address</label><value>0.00</value></sys>
+<sys><id>SFREEMEM</id><label>Free Memory</label><value>42798.00</value></sys>
+<sys><id>SFREEVIRTMEM</id><label>Free Virtual Memory</label><value>70521.00</value></sys>
+<sys><id>SFREEVMEM</id><label>Free Video Memory</label><value>21993.00</value></sys>
+<sys><id>SGPU1BIUTI</id><label>GPU1 BI Utilization</label><value>2.00</value></sys>
+<sys><id>SGPU1BUSTYP</id><label>GPU1 Bus Type</label><value>0.00</value></sys>
+<sys><id>SGPU1CLK</id><label>GPU1 Clock</label><value>270.00</value></sys>
+<sys><id>SGPU1MCUTI</id><label>GPU1 MC Utilization</label><value>9.00</value></sys>
+<sys><id>SGPU1MEMCLK</id><label>GPU1 Memory Clock</label><value>625.00</value></sys>
+<sys><id>SGPU1PERFCAP</id><label>GPU1 PerfCap Reason</label><value>0.00</value></sys>
+<sys><id>SGPU1USEDDEMEM</id><label>GPU1 Used Dedicated Memory</label><value>2339.00</value></sys>
+<sys><id>SGPU1USEDDYMEM</id><label>GPU1 Used Dynamic Memory</label><value>188.00</value></sys>
+<sys><id>SGPU1UTI</id><label>GPU1 Utilization</label><value>38.00</value></sys>
+<sys><id>SGPU1VEUTI</id><label>GPU1 VE Utilization</label><value>0.00</value></sys>
+<sys><id>SGPU2BUSTYP</id><label>GPU2 Bus Type</label><value>0.00</value></sys>
+<sys><id>SGPU2USEDDEMEM</id><label>GPU2 Used Dedicated Memory</label><value>242.00</value></sys>
+<sys><id>SGPU2USEDDYMEM</id><label>GPU2 Used Dynamic Memory</label><value>1538.00</value></sys>
+<sys><id>SHOUR12</id><label>Hour (1-12)</label><value>11.00</value></sys>
+<sys><id>SHOUR24</id><label>Hour (0-23)</label><value>11.00</value></sys>
+<sys><id>SMASTVOL</id><label>Master Volume</label><value>100.00</value></sys>
+<sys><id>SMEMCLK</id><label>Memory Clock</label><value>3000.00</value></sys>
+<sys><id>SMEMSPEED</id><label>Memory Speed</label><value>0.00</value></sys>
+<sys><id>SMEMTIM</id><label>Memory Timings</label><value>0.00</value></sys>
+<sys><id>SMEMUTI</id><label>Memory Utilization</label><value>32.00</value></sys>
+<sys><id>SMIN</id><label>Minute</label><value>47.00</value></sys>
+<sys><id>SMOBONAME</id><label>Motherboard Name</label><value>0.00</value></sys>
+<sys><id>SMONTH</id><label>Month</label><value>10.00</value></sys>
+<sys><id>SMONTHNAME</id><label>Month Name</label><value>0.00</value></sys>
+<sys><id>SNBCLK</id><label>North Bridge Clock</label><value>3000.00</value></sys>
+<sys><id>SNBMUL</id><label>North Bridge Multiplier</label><value>30.00</value></sys>
+<sys><id>SNIC1CONNSPD</id><label>NIC1 Connection Speed</label><value>3.00</value></sys>
+<sys><id>SNIC1DLRATE</id><label>NIC1 Download Rate</label><value>0.00</value></sys>
+<sys><id>SNIC1TOTDL</id><label>NIC1 Total Download</label><value>0.00</value></sys>
+<sys><id>SNIC1TOTUL</id><label>NIC1 Total Upload</label><value>0.00</value></sys>
+<sys><id>SNIC1ULRATE</id><label>NIC1 Upload Rate</label><value>0.00</value></sys>
+<sys><id>SNIC2DLRATE</id><label>NIC2 Download Rate</label><value>0.00</value></sys>
+<sys><id>SNIC2TOTDL</id><label>NIC2 Total Download</label><value>0.00</value></sys>
+<sys><id>SNIC2TOTUL</id><label>NIC2 Total Upload</label><value>0.00</value></sys>
+<sys><id>SNIC2ULRATE</id><label>NIC2 Upload Rate</label><value>0.00</value></sys>
+<sys><id>SNIC3DLRATE</id><label>NIC3 Download Rate</label><value>0.00</value></sys>
+<sys><id>SNIC3TOTDL</id><label>NIC3 Total Download</label><value>0.00</value></sys>
+<sys><id>SNIC3TOTUL</id><label>NIC3 Total Upload</label><value>0.00</value></sys>
+<sys><id>SNIC3ULRATE</id><label>NIC3 Upload Rate</label><value>0.00</value></sys>
+<sys><id>SNIC4DLRATE</id><label>NIC4 Download Rate</label><value>0.00</value></sys>
+<sys><id>SNIC4TOTDL</id><label>NIC4 Total Download</label><value>0.00</value></sys>
+<sys><id>SNIC4TOTUL</id><label>NIC4 Total Upload</label><value>0.00</value></sys>
+<sys><id>SNIC4ULRATE</id><label>NIC4 Upload Rate</label><value>0.00</value></sys>
+<sys><id>SNIC5DLRATE</id><label>NIC5 Download Rate</label><value>0.00</value></sys>
+<sys><id>SNIC5TOTDL</id><label>NIC5 Total Download</label><value>0.00</value></sys>
+<sys><id>SNIC5TOTUL</id><label>NIC5 Total Upload</label><value>0.00</value></sys>
+<sys><id>SNIC5ULRATE</id><label>NIC5 Upload Rate</label><value>0.00</value></sys>
+<sys><id>SNIC6CONNSPD</id><label>NIC6 Connection Speed</label><value>5000.00</value></sys>
+<sys><id>SNIC6DLRATE</id><label>NIC6 Download Rate</label><value>1.60</value></sys>
+<sys><id>SNIC6TOTDL</id><label>NIC6 Total Download</label><value>735.60</value></sys>
+<sys><id>SNIC6TOTUL</id><label>NIC6 Total Upload</label><value>58.50</value></sys>
+<sys><id>SNIC6ULRATE</id><label>NIC6 Upload Rate</label><value>2.20</value></sys>
+<sys><id>SPRIIPADDR</id><label>Primary IP Address</label><value>0.00</value></sys>
+<sys><id>SPROCESSES</id><label>Processes</label><value>356.00</value></sys>
+<sys><id>SRTSSFPS</id><label>RTSS FPS</label><value>0.00</value></sys>
+<sys><id>SSEC</id><label>Second</label><value>48.00</value></sys>
+<sys><id>SSLISTA</id><label>SLI Status</label><value>0.00</value></sys>
+<sys><id>SSMASTA</id><label>SMART Status</label><value>0.00</value></sys>
+<sys><id>STIME</id><label>Time</label><value>0.00</value></sys>
+<sys><id>STIMENS</id><label>Time (HH:MM)</label><value>0.00</value></sys>
+<sys><id>SUPTIME</id><label>UpTime</label><value>0.00</value></sys>
+<sys><id>SUPTIMENS</id><label>UpTime (HH:MM)</label><value>0.00</value></sys>
+<sys><id>SUSEDMEM</id><label>Used Memory</label><value>20354.00</value></sys>
+<sys><id>SUSEDVIRTMEM</id><label>Used Virtual Memory</label><value>25398.00</value></sys>
+<sys><id>SUSEDVMEM</id><label>Used Video Memory</label><value>2583.00</value></sys>
+<sys><id>SUSERS</id><label>Users</label><value>1.00</value></sys>
+<sys><id>SVIRTMEMUTI</id><label>Virtual Memory Utilization</label><value>26.00</value></sys>
+<sys><id>SVMEMUSAGE</id><label>Video Memory Utilization</label><value>11.00</value></sys>
+<sys><id>SVREFRATE</id><label>Vertical Refresh Rate</label><value>240.00</value></sys>
+<sys><id>SWEEKOFYEAR</id><label>Week of Year</label><value>44.00</value></sys>
+<sys><id>SYEAR</id><label>Year</label><value>2026.00</value></sys>
+<temp><id>TCCD1</id><label>CCD #1</label><value>48.00</value></temp>
+<temp><id>TCCD2</id><label>CCD #2</label><value>59.00</value></temp>
+<temp><id>TCPU</id><label>CPU</label><value>51.00</value></temp>
+<temp><id>TCPUDIO</id><label>CPU Diode</label><value>62.00</value></temp>
+<temp><id>TCPUPKG</id><label>CPU Package</label><value>61.00</value></temp>
+<temp><id>TDIMMTS2</id><label>DIMM2</label><value>55.00</value></temp>
+<temp><id>TDIMMTS4</id><label>DIMM4</label><value>54.00</value></temp>
+<temp><id>TGPU1</id><label>GPU1</label><value>43.00</value></temp>
+<temp><id>TGPU1HOT</id><label>GPU1 Hotspot</label><value>55.00</value></temp>
+<temp><id>TGPU1MEM</id><label>GPU1 Memory</label><value>56.00</value></temp>
+<temp><id>TGPU2</id><label>GPU2</label><value>51.00</value></temp>
+<temp><id>TGPU2SOC</id><label>GPU2 SoC</label><value>56.00</value></temp>
+<temp><id>TMOBO</id><label>Motherboard</label><value>47.00</value></temp>
+<temp><id>TPCH1DIO</id><label>PCH #1 Diode</label><value>73.00</value></temp>
+<temp><id>TPCH2DIO</id><label>PCH #2 Diode</label><value>73.00</value></temp>
+<temp><id>TVRM</id><label>VRM</label><value>53.00</value></temp>
+<volt><id>V18V</id><label>+1.8 V</label><value>1.81</value></volt>
+<volt><id>V33V</id><label>+3.3 V</label><value>3.34</value></volt>
+<volt><id>V3VSB</id><label>+3.3 V Standby</label><value>3.38</value></volt>
+<volt><id>VCHIP</id><label>Chipset</label><value>0.53</value></volt>
+<volt><id>VCPU</id><label>CPU Core</label><value>1.33</value></volt>
+<volt><id>VCPUVID</id><label>CPU VID</label><value>0.79</value></volt>
+<volt><id>VGPU1</id><label>GPU1</label><value>0.73</value></volt>
+<volt><id>VGPU18P1</id><label>GPU1 8-pin #1</label><value>12.16</value></volt>
+<volt><id>VGPU18P2</id><label>GPU1 8-pin #2</label><value>12.24</value></volt>
+<volt><id>VGPU18P3</id><label>GPU1 8-pin #3</label><value>12.34</value></volt>
+<volt><id>VGPU1PCIE</id><label>GPU1 PCIe</label><value>12.21</value></volt>
+<volt><id>VGPU2</id><label>GPU2</label><value>1.36</value></volt>
+<volt><id>VGPU2SOC</id><label>GPU2 SoC</label><value>1.25</value></volt>
+<volt><id>VP12V</id><label>+12 V</label><value>12.19</value></volt>
+<volt><id>VP5V</id><label>+5 V</label><value>4.92</value></volt>
+<volt><id>VSOC</id><label>SoC</label><value>1.23</value></volt>
+<volt><id>VVDDIO</id><label>VDDIO</label><value>1.39</value></volt>
