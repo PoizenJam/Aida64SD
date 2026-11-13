@@ -27,7 +27,10 @@ jobs:
           ref: refs/tags/${{ env.TAG }}
       - uses: actions/setup-go@v7
         with:
-          go-version-file: go.mod
+          # Latest patch of the go.mod minor version: a fixed 1.26.0 would
+          # build releases without later standard-library security fixes.
+          go-version: "1.26.x"
+          check-latest: true
       - name: Install mingw-w64 and the Elgato CLI
         run: |
           sudo apt-get update
