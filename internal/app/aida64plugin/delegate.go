@@ -199,6 +199,10 @@ func (p *Plugin) OnWillDisappear(event *streamdeck.EvWillDisappear) {
 		return
 	}
 
+	// A key that reappears gets its manifest image back, so a disconnected
+	// key must be marked again to show the disconnected image.
+	p.clearDisconnected(event.Context)
+
 	if event.Action == derivedAction {
 		p.mu.Lock()
 		delete(p.derivedSettings, event.Context)

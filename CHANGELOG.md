@@ -30,7 +30,9 @@ modified version of [hwinfo-streamdeck](https://github.com/moeilijk/hwinfo-strea
 - Thresholds recolour a tile and show alert text, with hysteresis, cooldown
   and snooze; a shared library of global thresholds applies by reading type,
   and each tile can opt out.
-- Shows Disconnected when AIDA64 closes and recovers when it returns;
-  restarts the bridge if it crashes or stops responding.
+- While AIDA64 is closed, configured Sensor, Composite and Derived keys show
+  "AIDA64 not detected" over dimmed key art (unconfigured keys keep the plain
+  art), and they recover by themselves when it returns.
+- Restarts the bridge if it crashes or stops responding.
 - Windows build and install script (`build.ps1`) alongside the Linux/WSL
   Makefile.

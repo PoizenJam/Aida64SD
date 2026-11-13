@@ -59,8 +59,11 @@ limit.
 
 ## Troubleshooting
 
-- **Keys show Disconnected.** AIDA64 is closed or shared memory is off (see
-  Install). The plugin reconnects on its own once AIDA64 is back.
+- **Keys show "AIDA64 not detected".** AIDA64 is closed or shared memory
+  is off (see Install). The plugin reconnects on its own once AIDA64 is
+  back, and the Settings key's Property Inspector shows the connection
+  status. Keys showing the plain key art without that text have no reading
+  chosen yet.
 - **Auto (INI) doesn't follow AIDA64.** The Settings Property Inspector
   says why under Refresh Rate, for example that AIDA64.INI wasn't found. Set
   the INI path there and press Refresh. AIDA64 writes the INI when it

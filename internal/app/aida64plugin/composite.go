@@ -390,7 +390,13 @@ func (p *Plugin) updateCompositeTile(ctx string) {
 
 	pollTime, err := p.getCachedPollTime()
 	if err != nil || pollTime == 0 || time.Since(time.Unix(0, int64(pollTime))) > stalenessWindow {
+		if compositeConfigured(settings) {
+			p.showDisconnected(ctx)
+		}
 		return
+	}
+	if p.clearDisconnected(ctx) {
+		forceUpdate = true
 	}
 	if !forceUpdate && pollTime == state.lastPollTime {
 		return

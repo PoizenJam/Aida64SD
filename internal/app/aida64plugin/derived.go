@@ -181,13 +181,17 @@ func (p *Plugin) updateDerivedTile(ctx string) {
 
 	pollTime, err := p.getCachedPollTime()
 	if err != nil || pollTime == 0 || time.Since(time.Unix(0, int64(pollTime))) > stalenessWindow {
+		if derivedConfigured(settings) {
+			p.showDisconnected(ctx)
+		}
 		return
 	}
-	if pollTime == state.lastPollTime {
+	redraw := p.clearDisconnected(ctx)
+	if !redraw && pollTime == state.lastPollTime {
 		return
 	}
 
-	if override := settings.UpdateIntervalOverrideMs; override > 0 {
+	if override := settings.UpdateIntervalOverrideMs; override > 0 && !redraw {
 		p.mu.RLock()
 		lastRender := p.lastRenderTime[ctx]
 		p.mu.RUnlock()

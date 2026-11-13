@@ -51,15 +51,19 @@ type Plugin struct {
 	graphs map[string]*graph.Graph
 
 	// Cached assets and state for performance
-	placeholderImage []byte               // cached startup chip placeholder image (set once at init, read-only after)
-	lastPollTime     map[string]uint64    // last processed PollTime per context
-	lastRenderTime   map[string]time.Time // wall-time of last render per context (for per-tile interval override)
-	smoothedValues   map[string]float64   // last smoothed graph value per context (for EMA)
-	autoRangeMax     map[string]int       // observed high-water mark per context for auto-range (key = context, context|slot, dial:ctx|page)
-	divisorCache     map[string]divisorCacheEntry
-	thresholdStates  map[string]map[string]*thresholdRuntimeState
-	thresholdSnoozes map[string]*thresholdSnoozeState
-	thresholdDirty   map[string]bool
+	placeholderImage []byte // cached startup chip placeholder image (set once at init, read-only after)
+	// disconnectedImage is the dimmed key art with "AIDA64 not detected"
+	// (set once at init); disconnectedShown marks keys currently showing it.
+	disconnectedImage []byte
+	disconnectedShown map[string]bool
+	lastPollTime      map[string]uint64    // last processed PollTime per context
+	lastRenderTime    map[string]time.Time // wall-time of last render per context (for per-tile interval override)
+	smoothedValues    map[string]float64   // last smoothed graph value per context (for EMA)
+	autoRangeMax      map[string]int       // observed high-water mark per context for auto-range (key = context, context|slot, dial:ctx|page)
+	divisorCache      map[string]divisorCacheEntry
+	thresholdStates   map[string]map[string]*thresholdRuntimeState
+	thresholdSnoozes  map[string]*thresholdSnoozeState
+	thresholdDirty    map[string]bool
 
 	// Global settings
 	globalSettings      globalSettings                   // plugin-wide settings (poll interval)
@@ -481,6 +485,12 @@ func NewPlugin(port, uuid, event, info string) (*Plugin, error) {
 	if len(p.placeholderImage) == 0 {
 		log.Printf("Warning: could not cache placeholder image\n")
 	}
+	defaultArt, _ := os.ReadFile("./defaultImage.png")
+	if img, err := renderDisconnectedImage(defaultArt); err == nil {
+		p.disconnectedImage = img
+	} else {
+		log.Printf("Warning: could not render disconnected image: %v\n", err)
+	}
 
 	// Bridge starts are deferred until global settings arrive (OnDidReceiveGlobalSettings).
 	// NewPlugin does not start any bridge here.
@@ -678,35 +688,20 @@ func (p *Plugin) updateTiles(data *actionData) {
 			}
 			data.settings.InErrorState = true
 			p.sd.SetSettings(data.context, &data.settings)
-
-			// Only set image on state transition (optimization #2)
-			if len(p.placeholderImage) > 0 {
-				if err := p.sd.SetImage(data.context, p.placeholderImage); err != nil {
-					log.Printf("Failed to setImage: %v\n", err)
-				}
-			}
 		}
+		// Not tied to InErrorState, which is saved with the key's settings: a
+		// key that reappears, or a plugin that restarts, during an outage
+		// still needs the image.
+		p.showDisconnected(data.context)
 		// Clear lastPollTime so we re-render when AIDA64 comes back
 		p.mu.Lock()
 		delete(p.lastPollTime, data.context)
 		p.mu.Unlock()
 	}
 
-	// show ui on property inspector if in error state
-	if data.settings.InErrorState {
-		payload := evStatus{Error: false, Message: "show_ui"}
-		err := p.sd.SendToPropertyInspector("com.poizenjam.aida64sd.reading", data.context, payload)
-		if err != nil {
-			log.Println("updateTiles SendToPropertyInspector", err)
-		}
-		data.settings.InErrorState = false
-		p.sd.SetSettings(data.context, &data.settings)
-	}
-
-	s := data.settings
 	forceUpdate := p.consumeThresholdDirty(data.context)
 
-	pollTime, err := p.pollTimeForUID(s.SensorUID)
+	pollTime, err := p.pollTimeForUID(data.settings.SensorUID)
 	if err != nil {
 		log.Printf("PollTime failed: %v\n", err)
 		showUnavailable()
@@ -716,6 +711,23 @@ func (p *Plugin) updateTiles(data *actionData) {
 		showUnavailable()
 		return
 	}
+
+	// AIDA64 is back: restore the PI (only once the poll succeeds, so an
+	// outage does not flip it every retry) and redraw over the
+	// disconnected image.
+	if data.settings.InErrorState {
+		payload := evStatus{Error: false, Message: "show_ui"}
+		err := p.sd.SendToPropertyInspector("com.poizenjam.aida64sd.reading", data.context, payload)
+		if err != nil {
+			log.Println("updateTiles SendToPropertyInspector", err)
+		}
+		data.settings.InErrorState = false
+		p.sd.SetSettings(data.context, &data.settings)
+	}
+	if p.clearDisconnected(data.context) {
+		forceUpdate = true
+	}
+	s := data.settings
 
 	if !forceUpdate {
 		p.mu.RLock()
